@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/golang/freetype/truetype"
-	"github.com/Strubbl/go-chart/v2/drawing"
+	"github.com/xoviat/go-chart/v2/drawing"
 )
 
 const (

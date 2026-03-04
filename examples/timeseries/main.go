@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	chart "github.com/Strubbl/go-chart/v2"
+	chart "github.com/xoviat/go-chart/v2"
 )
 
 func drawChart(res http.ResponseWriter, req *http.Request) {

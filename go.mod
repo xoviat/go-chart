@@ -1,4 +1,4 @@
-module github.com/Strubbl/go-chart/v2
+module github.com/xoviat/go-chart/v2
 
 go 1.24.2
 

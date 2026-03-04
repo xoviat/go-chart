@@ -3,7 +3,7 @@ package chart
 import (
 	"testing"
 
-	"github.com/Strubbl/go-chart/v2/testutil"
+	"github.com/xoviat/go-chart/v2/testutil"
 )
 
 func TestSplitCSV(t *testing.T) {

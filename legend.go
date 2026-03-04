@@ -1,7 +1,7 @@
 package chart
 
 import (
-	"github.com/Strubbl/go-chart/v2/drawing"
+	"github.com/xoviat/go-chart/v2/drawing"
 )
 
 // Legend returns a legend renderable function.

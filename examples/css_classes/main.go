@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Strubbl/go-chart/v2"
+	"github.com/xoviat/go-chart/v2"
 )
 
 // Note: Additional examples on how to add Stylesheets are in the custom_stylesheets example

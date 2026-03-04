@@ -6,8 +6,8 @@ import (
 	"io"
 	"math"
 
-	"github.com/Strubbl/go-chart/v2/drawing"
 	"github.com/golang/freetype/truetype"
+	"github.com/xoviat/go-chart/v2/drawing"
 )
 
 // PNG returns a new png/raster renderer.
