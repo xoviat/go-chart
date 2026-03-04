@@ -6,8 +6,8 @@ import (
 	"io"
 	"math"
 
-	"github.com/golang/freetype/truetype"
 	"github.com/Strubbl/go-chart/v2/drawing"
+	"github.com/golang/freetype/truetype"
 )
 
 // PNG returns a new png/raster renderer.
@@ -16,8 +16,22 @@ func PNG(width, height int) (Renderer, error) {
 	gc, err := drawing.NewRasterGraphicContext(i)
 	if err == nil {
 		return &rasterRenderer{
-			i:  i,
-			gc: gc,
+			i:            i,
+			gc:           gc,
+			drawOnRender: true,
+		}, nil
+	}
+	return nil, err
+}
+
+// PNG returns a new png/raster renderer.
+func RGBA(i *image.RGBA) (Renderer, error) {
+	gc, err := drawing.NewRasterGraphicContext(i)
+	if err == nil {
+		return &rasterRenderer{
+			i:            i,
+			gc:           gc,
+			drawOnRender: false,
 		}, nil
 	}
 	return nil, err
@@ -29,6 +43,7 @@ type rasterRenderer struct {
 	gc *drawing.RasterGraphicContext
 
 	rotateRadians *float64
+	drawOnRender  bool
 
 	s Style
 }
@@ -226,5 +241,10 @@ func (rr *rasterRenderer) Save(w io.Writer) error {
 		typed.SetRGBA(rr.i)
 		return nil
 	}
+
+	if !rr.drawOnRender {
+		return nil
+	}
+
 	return png.Encode(w, rr.i)
 }
