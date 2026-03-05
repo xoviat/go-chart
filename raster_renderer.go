@@ -33,7 +33,7 @@ func RGBA(i **image.RGBA) RendererProvider {
 			return &rasterRenderer{
 				i:            *i,
 				gc:           gc,
-				drawOnRender: true,
+				drawOnRender: false,
 			}, nil
 		}
 		return nil, err
