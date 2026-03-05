@@ -25,16 +25,19 @@ func PNG(width, height int) (Renderer, error) {
 }
 
 // PNG returns a new png/raster renderer.
-func RGBA(i *image.RGBA) (Renderer, error) {
-	gc, err := drawing.NewRasterGraphicContext(i)
-	if err == nil {
-		return &rasterRenderer{
-			i:            i,
-			gc:           gc,
-			drawOnRender: false,
-		}, nil
+func RGBA(i **image.RGBA) RendererProvider {
+	return func(width, height int) (Renderer, error) {
+		*i = image.NewRGBA(image.Rect(0, 0, width, height))
+		gc, err := drawing.NewRasterGraphicContext(*i)
+		if err == nil {
+			return &rasterRenderer{
+				i:            *i,
+				gc:           gc,
+				drawOnRender: true,
+			}, nil
+		}
+		return nil, err
 	}
-	return nil, err
 }
 
 // rasterRenderer renders chart commands to a bitmap.
